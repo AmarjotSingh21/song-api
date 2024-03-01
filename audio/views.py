@@ -12,14 +12,14 @@ from rest_framework import status
 
 class AudioListAPIView(ListAPIView):
     serializer_class = AudioSerializer
-    queryset = AudioModel.objects.all()
+    queryset = AudioModel.objects.all().order_by('-created_at')
     pagination_class = PageNumberPagination
     pagination_class.page_size = 10
 
 
 class AudioAPIView(APIView):
     serializer_class = AudioSerializer
-    queryset = AudioModel.objects.all().order_by('-created_at')
+    queryset = AudioModel.objects.all()
     lookup_field = 'title'
 
     def get(self, request, title):

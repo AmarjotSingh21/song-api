@@ -12,7 +12,7 @@ class AudioModel(models.Model):
         validators=[MaxValueValidator(1), MinValueValidator(0)])
     key = models.PositiveSmallIntegerField()
     loudness = models.FloatField(validators=[MaxValueValidator(0)])
-    mode = models.BooleanField()
+    mode = models.PositiveSmallIntegerField()
     acousticness = models.FloatField(
         validators=[MaxValueValidator(1), MinValueValidator(0)])
     instrumentalness = models.FloatField(
@@ -27,7 +27,7 @@ class AudioModel(models.Model):
     num_bars = models.PositiveSmallIntegerField()
     num_sections = models.PositiveSmallIntegerField()
     num_segments = models.PositiveSmallIntegerField()
-    audio_class = models.BooleanField(db_column="class", verbose_name="class")
+    audio_class = models.PositiveSmallIntegerField(db_column="class", verbose_name="class")
     rating = models.PositiveSmallIntegerField(
         validators=[MaxValueValidator(5), MinValueValidator(1)], null=True, blank=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
